@@ -1,0 +1,121 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/activity_login"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:focusable="true"
+    android:focusableInTouchMode="true"
+    android:orientation="vertical">
+
+    <!-- 顶部logo -->
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="32"
+        android:orientation="horizontal">
+
+        <TextView
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1" />
+
+        <ImageView
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_vertical"
+            android:layout_marginTop="@dimen/login_view_logo_margin_top"
+            android:layout_weight="2" />
+
+        <TextView
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1" />
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="68"
+        android:orientation="vertical">
+
+        <!-- 手机号 -->
+        <EditText
+            android:text="13605372003"
+            android:id="@+id/et_phone_number"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginEnd="@dimen/login_view_margin_start_end"
+            android:layout_marginStart="@dimen/login_view_margin_start_end"
+            android:layout_marginTop="@dimen/login_view_phone_margin_top"
+            android:background="@null"
+            android:gravity="center"
+            android:hint="@string/phone_number"
+            android:inputType="phone"
+            android:textColor="@color/commonEditTextTextColor"
+            android:textColorHint="@color/commonEditTextHintTextColor"
+            android:textSize="@dimen/common_edit_text_text_size" />
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/common_split_line_size"
+            android:layout_marginEnd="@dimen/login_view_margin_start_end"
+            android:layout_marginStart="@dimen/login_view_margin_start_end"
+            android:layout_marginTop="@dimen/login_view_split_line_margin_top"
+            android:background="@color/commonSplitLineColor" />
+
+        <!-- 密码     ghost008  -->
+        <EditText
+            android:text="123123"
+            android:id="@+id/et_password"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginEnd="@dimen/login_view_margin_start_end"
+            android:layout_marginStart="@dimen/login_view_margin_start_end"
+            android:layout_marginTop="@dimen/login_view_password_margin_top"
+            android:background="@null"
+            android:gravity="center"
+            android:hint="@string/password"
+            android:inputType="textPassword"
+            android:textColor="@color/commonEditTextTextColor"
+            android:textColorHint="@color/commonEditTextHintTextColor"
+            android:textSize="@dimen/common_edit_text_text_size" />
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/common_split_line_size"
+            android:layout_marginEnd="@dimen/login_view_margin_start_end"
+            android:layout_marginStart="@dimen/login_view_margin_start_end"
+            android:layout_marginTop="@dimen/login_view_split_line_margin_top"
+            android:background="@color/commonSplitLineColor" />
+
+        <!-- 登录界面 -->
+        <Button
+            android:id="@+id/btn_login"
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/common_button_height"
+            android:layout_marginEnd="@dimen/login_view_margin_start_end"
+            android:layout_marginStart="@dimen/login_view_margin_start_end"
+            android:layout_marginTop="@dimen/login_view_button_margin_top"
+            android:text="@string/login"
+            android:textColor="@color/commonButtonTextColor"
+            android:textSize="@dimen/common_button_text_size" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="0dp"
+            android:layout_weight="1" />
+
+        <!-- 通过验证码登录 -->
+        <TextView
+            android:id="@+id/tv_login_by_validate_code"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="@dimen/login_view_code_login_margin_bottom"
+            android:gravity="center_horizontal"
+            android:text="@string/login_by_validate_code"
+            android:textColor="@color/commonEditTextHintTextColor"
+            android:textSize="@dimen/login_view_code_login_text_size" />
+
+    </LinearLayout>
+
+</LinearLayout>

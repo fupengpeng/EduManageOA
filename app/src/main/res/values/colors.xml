@@ -1,6 +1,132 @@
 <?xml version="1.0" encoding="utf-8"?>
-<resources>
+<resources
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    tools:ignore="MissingTranslation"
+    >
     <color name="colorPrimary">#3F51B5</color>
     <color name="colorPrimaryDark">#303F9F</color>
     <color name="colorAccent">#FF4081</color>
+    <color name="transparent">#00ffffff</color>
+    <color name="blue_light">#02A8F3</color>
+    <!-- 通用 -->
+    <!-- EditText hint字体颜色 -->
+    <color name="commonEditTextHintTextColor">#b3b3b3</color>
+    <!-- EditText字体颜色 -->
+    <color name="commonEditTextTextColor">#333333</color>
+    <!-- 分割线颜色 -->
+    <color name="commonSplitLineColor">#b3b3b3</color>
+    <!-- 按钮字体颜色 -->
+    <color name="commonButtonTextColor">#ffffff</color>
+    <!-- 标题字体颜色 -->
+    <color name="commonTitleTextColor">#ffffff</color>
+    <!-- 内容背景色 -->
+    <color name="commonContentBG">#fafafa</color>
+    
+    <!-- 侧滑菜单背景色 -->
+    <color name="bgLeftMenu">#21244c</color>
+    <!-- 侧滑菜单标题颜色 -->
+    <color name="leftMenuMainTextColor">#ffffff</color>
+    <!-- 侧滑菜单职称字体颜色 -->
+    <color name="leftMenuWorkNameTextColor">#d3aa50</color>
+    <!-- 侧滑菜单状态字体颜色 -->
+    <color name="leftMenuStateTextColor">#8e8ea0</color>
+    <!-- 侧滑菜单标题背景颜色 -->
+    <color name="bgLeftMenuTitleColor">#2e2f4d</color>
+
+    <!-- 二维码 -->
+    <color name="qr_checked_color">#ffffff</color>
+    <color name="qr_unchecked_color">#e992a1</color>
+    <color name="bg_shop_qr">#d32442</color>
+    <color name="bg_pay_qr">#fb722e</color>
+
+
+    <color name="colorWhite">#FFFFFF</color>
+    <color name="colorBlack">#000000</color>
+    <color name="timeAndPhone">#b3b3b3</color>
+    <!--背景色-->
+    <color name="view_background">#F0F0F0F0</color>
+    <!---->
+    <color name="clientUserName">#000000</color>
+    <color name="client_price">#FF0000</color>
+    <!--线条粗细-->
+    <color name="client_view">#e0e0e0e0</color>
+    <color name="color_red">#FF0000</color>
+    <color name="color_green">#008000</color>
+    <color name="client_screen_popup_window_background">#df000000</color>
+    <color name="dark_gray">#F5F5F5F5</color>
+    <color name="client_details_popup_window_background">#7e000000</color>
+    <color name="client_details_original_price">#d0d0d0</color>
+    <color name="sure">#00A600</color>
+    <color name="client_building_color">#2828FF</color>
+
+    <color name="scan_corner_color">#0effc2</color>
+
+
+    <!--order-->
+    <!-- 列表项按下 -->
+    <color name="list_item_pressed">#FDBD25</color>
+    <!--客户信息背景色-->
+    <color name="user_msg_bg">#F9F9F9</color>
+    <!--背景色-->
+
+    <color name="black">#000000</color>
+    <color name="white">#FFFFFF</color>
+    <color name="red">#ff0000</color>
+
+    <color name="dark_green">#009900</color>
+    <color name="dark_red">#990000</color>
+
+    <color name="bright">#d3aa50</color>
+    <color name="hover">#AF7119</color>
+    <color name="dark">#2A2021</color>
+    <color name="gray">#ECECEC</color>
+
+    <!--order-->
+
+    <!--  beforehand_appoint  -->
+
+    <!--    文字颜色    -->
+    <color name="text_dark_green">#009900</color>
+    <color name="text_dark_red">#990000</color>
+    <color name="text_black">#000000</color>
+    <color name="text_white">#FFFFFF</color>
+    <color name="text_bright">#d3aa50</color>
+    <color name="text_hover">#AF7119</color>
+    <color name="text_dark">#2A2021</color>
+    <color name="text_gray">#818181</color>
+
+    <!--    背景色    -->
+    <color name="bg_dark_green">#009900</color>
+    <color name="bg_dark_red">#990000</color>
+    <color name="bg_black">#000000</color>
+    <color name="bg_white">#FFFFFF</color>
+    <color name="bg_bright">#d3aa50</color>
+    <color name="bg_hover">#AF7119</color>
+    <color name="bg_dark">#2A2021</color>
+    <color name="bg_dark_gray">#818181</color>
+    <color name="bg_light_gray">#FAFAFA</color>
+
+    <!--    边框色    -->
+    <color name="border_dark_green">#009900</color>
+    <color name="border_dark_red">#990000</color>
+    <color name="border_black">#000000</color>
+    <color name="border_white">#FFFFFF</color>
+    <color name="border_bright">#d3aa50</color>
+    <color name="border_hover">#AF7119</color>
+    <color name="border_dark">#2A2021</color>
+    <color name="border_dark_gray">#818181</color>
+    <color name="border_light_gray">#FAFAFA</color>
+    <!--    分割线    -->
+    <color name="cut_off_rule">#ECECEC</color>
+
+    <!--  beforehand_appoint  -->
+
+
+
+    <color name="pickerview_bgColor_overlay">#60000000</color>
+    <color name="pickerview_bg_topbar">#f5f5f5</color>
+    <color name="pickerview_timebtn_nor">#057dff</color>
+    <color name="pickerview_timebtn_pre">#c2daf5</color>
+    <color name="pickerview_topbar_title">#000000</color>
 </resources>

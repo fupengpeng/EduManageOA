@@ -1,18 +1,453 @@
 <?xml version="1.0" encoding="utf-8"?>
-<android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
-    xmlns:tools="http://schemas.android.com/tools"
+<com.jdlx.edumanageoa.customerview.MyDrawerLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/drawerLayout"
     android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    tools:context="com.jdlx.edumanageoa.MainActivity">
+    android:layout_height="match_parent">
 
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Hello World!"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintLeft_toLeftOf="parent"
-        app:layout_constraintRight_toRightOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+    <!-- 主内容区 -->
+    <FrameLayout
+        android:id="@+id/fl_main_content"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent" />
 
-</android.support.constraint.ConstraintLayout>
+    <!-- 侧滑菜单 -->
+    <ScrollView
+        android:id="@+id/sv_left_menu"
+        android:layout_width="@dimen/x270"
+        android:layout_height="match_parent"
+        android:layout_gravity="start"
+        android:background="@color/bgLeftMenu"
+        android:scrollbars="none">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
+
+            <!--用户-->
+            <LinearLayout
+                android:id="@+id/ll_user_info"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="@dimen/y12"
+                android:layout_marginTop="@dimen/y32"
+                android:orientation="horizontal"
+                android:paddingEnd="@dimen/left_menu_padding_end"
+                android:paddingStart="@dimen/left_menu_padding_start">
+
+                <!-- 头像 -->
+                <com.jdlx.edumanageoa.customerview.CircleImageView
+                    android:id="@+id/iv_user_head"
+                    android:layout_width="@dimen/x49"
+                    android:layout_height="@dimen/x49"
+                    android:src="@mipmap/ic_launcher" />
+
+                <!-- 用户名，职称 -->
+                <LinearLayout
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center_vertical"
+                    android:layout_marginStart="@dimen/x9"
+                    android:orientation="vertical">
+
+                    <!-- 用户名 -->
+                    <TextView
+                        android:id="@+id/tv_user_name"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:textColor="@color/leftMenuMainTextColor"
+                        android:textSize="@dimen/x16" />
+
+                    <!-- 职称 -->
+                    <TextView
+                        android:id="@+id/tv_user_work_name"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="@dimen/y3"
+                        android:textColor="@color/leftMenuWorkNameTextColor"
+                        android:textSize="@dimen/left_menu_state_title_text_size" />
+                </LinearLayout>
+
+                <TextView
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1" />
+
+                <!-- 工作状态 -->
+                <TextView
+                    android:id="@+id/tv_user_work_state"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center_vertical"
+                    android:layout_marginEnd="@dimen/left_menu_right_text_margin_end"
+                    android:textColor="@color/leftMenuStateTextColor"
+                    android:textSize="@dimen/left_menu_state_title_text_size" />
+
+                <ImageView
+                    android:layout_width="@dimen/x16"
+                    android:layout_height="@dimen/x16"
+                    android:layout_gravity="center_vertical"
+                    android:src="@drawable/arrow_right_menu" />
+
+            </LinearLayout>
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/common_split_line_size"
+                android:background="@color/bgLeftMenuTitleColor" />
+
+            <!--店铺-->
+            <LinearLayout
+                android:id="@+id/ll_shop_info"
+                style="@style/left_menu_item">
+
+                <!-- 门店名 -->
+                <TextView
+                    android:id="@+id/tv_curr_shop_name"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center_vertical"
+                    android:textColor="@color/leftMenuMainTextColor"
+                    android:textSize="@dimen/left_menu_main_title_text_size" />
+
+                <TextView
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center_vertical"
+                    android:layout_marginEnd="@dimen/left_menu_right_text_margin_end"
+                    android:text="@string/change"
+                    android:textColor="@color/leftMenuStateTextColor"
+                    android:textSize="@dimen/left_menu_state_title_text_size" />
+
+                <ImageView
+                    android:layout_width="@dimen/left_menu_right_arrow_size"
+                    android:layout_height="@dimen/left_menu_right_arrow_size"
+                    android:layout_gravity="center_vertical"
+                    android:src="@drawable/arrow_right_menu" />
+
+            </LinearLayout>
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/common_split_line_size"
+                android:background="@color/bgLeftMenuTitleColor" />
+
+            <!--营业额-->
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/y15"
+                android:background="@color/bgLeftMenuTitleColor"
+                android:orientation="vertical">
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal">
+
+                    <!--营业额-->
+                    <LinearLayout
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:gravity="center"
+                        android:orientation="vertical"
+                        android:paddingBottom="@dimen/y9"
+                        android:paddingTop="@dimen/y9">
+
+                        <TextView
+                            android:id="@+id/tv_curr_shop_turnover"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:textColor="@color/leftMenuMainTextColor"
+                            android:textSize="@dimen/left_menu_main_title_text_size" />
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginTop="@dimen/y2"
+                            android:text="@string/income"
+                            android:textColor="@color/leftMenuStateTextColor"
+                            android:textSize="@dimen/left_menu_state_title_text_size" />
+                    </LinearLayout>
+
+                    <TextView
+                        android:layout_width="1dp"
+                        android:layout_height="@dimen/y13"
+                        android:layout_gravity="center_vertical"
+                        android:background="@color/bgLeftMenu" />
+
+                    <!--单量/客量-->
+                    <LinearLayout
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:gravity="center"
+                        android:orientation="vertical"
+                        android:paddingBottom="@dimen/y9"
+                        android:paddingTop="@dimen/y9">
+
+                        <TextView
+                            android:id="@+id/tv_curr_shop_order_customer_number"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:textColor="@color/leftMenuMainTextColor"
+                            android:textSize="@dimen/left_menu_main_title_text_size" />
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginTop="@dimen/y2"
+                            android:text="@string/order_number_and_customer_number"
+                            android:textColor="@color/leftMenuStateTextColor"
+                            android:textSize="@dimen/left_menu_state_title_text_size" />
+                    </LinearLayout>
+
+                    <TextView
+                        android:layout_width="1dp"
+                        android:layout_height="@dimen/y13"
+                        android:layout_gravity="center_vertical"
+                        android:background="@color/bgLeftMenu" />
+
+                    <!--新增会员-->
+                    <LinearLayout
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:gravity="center"
+                        android:orientation="vertical"
+                        android:paddingBottom="@dimen/y9"
+                        android:paddingTop="@dimen/y9">
+
+                        <TextView
+                            android:id="@+id/tv_curr_shop_new_customer_number"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:textColor="@color/leftMenuMainTextColor"
+                            android:textSize="@dimen/left_menu_main_title_text_size" />
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginTop="@dimen/y2"
+                            android:text="@string/new_customer"
+                            android:textColor="@color/leftMenuStateTextColor"
+                            android:textSize="@dimen/left_menu_state_title_text_size" />
+                    </LinearLayout>
+
+                </LinearLayout>
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="@dimen/common_split_line_size"
+                    android:layout_marginStart="@dimen/left_menu_padding_start"
+                    android:background="@color/bgLeftMenu" />
+
+                <!--业绩分析-->
+                <LinearLayout
+                    android:id="@+id/ll_performance_analysis"
+                    style="@style/left_menu_item">
+
+                    <!-- 业绩分析 -->
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="center_vertical"
+                        android:text="@string/performance_analysis"
+                        android:textColor="@color/leftMenuMainTextColor"
+                        android:textSize="@dimen/left_menu_main_title_text_size" />
+
+                    <TextView
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1" />
+
+                    <ImageView
+                        android:layout_width="@dimen/left_menu_right_arrow_size"
+                        android:layout_height="@dimen/left_menu_right_arrow_size"
+                        android:layout_gravity="center_vertical"
+                        android:src="@drawable/arrow_right_menu" />
+
+                </LinearLayout>
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="@dimen/common_split_line_size"
+                    android:layout_marginStart="@dimen/left_menu_padding_start"
+                    android:background="@color/bgLeftMenu" />
+
+                <!--客单明细-->
+                <LinearLayout
+                    android:id="@+id/ll_order_detail"
+                    style="@style/left_menu_item">
+
+                    <!-- 客单明细 -->
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="center_vertical"
+                        android:text="@string/order_detail"
+                        android:textColor="@color/leftMenuMainTextColor"
+                        android:textSize="@dimen/left_menu_main_title_text_size" />
+
+                    <TextView
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1" />
+
+                    <ImageView
+                        android:layout_width="@dimen/left_menu_right_arrow_size"
+                        android:layout_height="@dimen/left_menu_right_arrow_size"
+                        android:layout_gravity="center_vertical"
+                        android:src="@drawable/arrow_right_menu" />
+
+                </LinearLayout>
+            </LinearLayout>
+
+            <!--偏好设置-->
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/y15"
+                android:background="@color/bgLeftMenuTitleColor"
+                android:orientation="vertical">
+                <!--偏好设置-->
+                <LinearLayout
+                    android:id="@+id/ll_preferences"
+                    style="@style/left_menu_item">
+
+                    <!-- 偏好设置 -->
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="center_vertical"
+                        android:text="@string/preferences"
+                        android:textColor="@color/leftMenuMainTextColor"
+                        android:textSize="@dimen/left_menu_main_title_text_size" />
+
+                    <TextView
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1" />
+
+                    <ImageView
+                        android:layout_width="@dimen/left_menu_right_arrow_size"
+                        android:layout_height="@dimen/left_menu_right_arrow_size"
+                        android:layout_gravity="center_vertical"
+                        android:src="@drawable/arrow_right_menu" />
+
+                </LinearLayout>
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="@dimen/common_split_line_size"
+                    android:layout_marginStart="@dimen/left_menu_padding_start"
+                    android:background="@color/bgLeftMenu" />
+
+                <!--客服咨询-->
+                <LinearLayout
+                    android:id="@+id/ll_customer_service"
+                    style="@style/left_menu_item">
+
+                    <!-- 客服咨询 -->
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="center_vertical"
+                        android:text="@string/customer_service"
+                        android:textColor="@color/leftMenuMainTextColor"
+                        android:textSize="@dimen/left_menu_main_title_text_size" />
+
+                    <TextView
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1" />
+
+                    <ImageView
+                        android:layout_width="@dimen/left_menu_right_arrow_size"
+                        android:layout_height="@dimen/left_menu_right_arrow_size"
+                        android:layout_gravity="center_vertical"
+                        android:src="@drawable/arrow_right_menu" />
+
+                </LinearLayout>
+            </LinearLayout>
+
+            <!--修改密码-->
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/y15"
+                android:background="@color/bgLeftMenuTitleColor"
+                android:orientation="vertical">
+                <!--修改密码-->
+                <LinearLayout
+                    android:id="@+id/ll_update_password"
+                    style="@style/left_menu_item">
+
+                    <!-- 修改密码 -->
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="center_vertical"
+                        android:text="@string/update_password"
+                        android:textColor="@color/leftMenuMainTextColor"
+                        android:textSize="@dimen/left_menu_main_title_text_size" />
+
+                    <TextView
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1" />
+
+                    <ImageView
+                        android:layout_width="@dimen/left_menu_right_arrow_size"
+                        android:layout_height="@dimen/left_menu_right_arrow_size"
+                        android:layout_gravity="center_vertical"
+                        android:src="@drawable/arrow_right_menu" />
+
+                </LinearLayout>
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="@dimen/common_split_line_size"
+                    android:layout_marginStart="@dimen/left_menu_padding_start"
+                    android:background="@color/bgLeftMenu" />
+
+                <!--退出登录-->
+                <LinearLayout
+                    android:id="@+id/ll_exit_login"
+                    style="@style/left_menu_item">
+
+                    <!-- 退出登录 -->
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="center_vertical"
+                        android:text="@string/exit_login"
+                        android:textColor="@color/leftMenuMainTextColor"
+                        android:textSize="@dimen/left_menu_main_title_text_size" />
+
+                    <TextView
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1" />
+
+                    <ImageView
+                        android:layout_width="@dimen/left_menu_right_arrow_size"
+                        android:layout_height="@dimen/left_menu_right_arrow_size"
+                        android:layout_gravity="center_vertical"
+                        android:src="@drawable/arrow_right_menu" />
+
+                </LinearLayout>
+            </LinearLayout>
+
+        </LinearLayout>
+    </ScrollView>
+
+</com.jdlx.edumanageoa.customerview.MyDrawerLayout>
+
+

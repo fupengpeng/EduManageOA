@@ -1,3 +1,72 @@
-<resources>
-    <string name="app_name">EduManageOA</string>
+<resources xmlns:android="http://schemas.android.com/apk/res/android" xmlns:tools="http://schemas.android.com/tools" tools:ignore="MissingTranslation">
+    <string name="app_name">教育管理OA</string>
+    <string name="phone_number">手机号</string>
+    <string name="password">密码</string>
+    <string name="login">登录</string>
+    <string name="login_by_validate_code">通过验证码登录</string>
+    <string name="screen">筛选</string>
+    <string name="checkout">已结账</string>
+    <string name="un_checkout">未结账</string>
+    <string name="client_user_name">散客</string>
+    <string name="client_call">联系TA</string>
+    <string name="client_all_price">合计￥:</string>
+    <string name="client_view_details">查看详情</string>
+    <string name="client_checkout_quick_mark">结款码</string>
+    <string name="client_screen_classify">分类筛选</string>
+    <string name="client_screen_all">全部</string>
+    <string name="client_screen_no_payment">未结账</string>
+    <string name="client_screen_payment">已结帐</string>
+    <string name="client_screen_cancel">取消</string>
+    <string name="client_screen_seek">客户姓名/手机号</string>
+    <string name="client_screen_vip_txt">会员卡</string>
+    <string name="client_nothing">无</string>
+    <string name="client_position">设计师</string>
+    <string name="client_details">客单详情</string>
+    <string name="client_book_building">顾客建档</string>
+
+    <string name="change">切换</string>
+    <string name="income">营业额</string>
+    <string name="order_number_and_customer_number">单量/客量</string>
+    <string name="new_customer">新增会员</string>
+    <string name="performance_analysis">业绩分析</string>
+    <string name="order_detail">客单明细</string>
+    <string name="preferences">个人设置</string>
+    <string name="customer_service">客服咨询</string>
+    <string name="update_password">修改密码</string>
+    <string name="exit_login">退出登录</string>
+    <string name="one_key_order">一键下单</string>
+    <string name="customs_documentation">客户建档</string>
+    <string name="service_queue">服务队列</string>
+    <string name="customer_bill">顾客账单</string>
+    <string name="my_message">我的消息</string>
+    <string name="manager_model">管理功能</string>
+    <string name="performance">绩效</string>
+    <string name="appoint">预约</string>
+    <string name="report">报表</string>
+    <string name="member">会员</string>
+    <string name="setup">设置</string>
+
+
+    <!--order-->
+    <string name="service_item">服务项目</string>
+    <!--order-->
+    <!--  beforehandappoint  -->
+    <string name="shop_name">店铺名称</string>
+    <string name="black">#ffffff</string>
+
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
+    <!--  beforehandappoint  -->
+
+    <!--===================时间选择器=======================-->
+    <string name="pickerview_cancel">取消</string>
+    <string name="pickerview_submit">确定</string>
+    <string name="pickerview_year">年</string>
+    <string name="pickerview_month">月</string>
+    <string name="pickerview_day">日</string>
+    <string name="pickerview_hours">时</string>
+    <string name="pickerview_minutes">分</string>
+    <string name="pickerview_seconds">秒</string>
+    <!--===================时间选择器=======================-->
 </resources>
+
