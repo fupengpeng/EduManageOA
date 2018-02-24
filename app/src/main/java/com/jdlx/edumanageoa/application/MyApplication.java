@@ -6,7 +6,6 @@ import android.os.Process;
 
 import com.jdlx.edumanageoa.common.Consts;
 import com.jdlx.edumanageoa.crash.CrashHandler;
-import com.jdlx.edumanageoa.entity.Shop;
 import com.jdlx.edumanageoa.entity.User;
 import com.jdlx.edumanageoa.receiver.NetworkStateReceiver;
 import com.jdlx.edumanageoa.util.EventBusUtils;
@@ -37,14 +36,7 @@ public class MyApplication extends Application {
      * 用户信息
      */
     private User user;
-    /**
-     * 门店信息
-     */
-    private List<Shop> shops;
-    /**
-     * 当前门店
-     */
-    private Shop currShop;
+
 
     @Override
     public void onCreate() {
@@ -192,19 +184,4 @@ public class MyApplication extends Application {
         // TODO: 2017/5/26
     }
 
-    public List<Shop> getShops() {
-        return shops;
-    }
-
-    public void setShops(List<Shop> shops) {
-        this.shops = shops;
-    }
-
-    public Shop getCurrShop() {
-        return currShop;
-    }
-
-    public void setCurrShop(Shop currShop) {
-        this.currShop = currShop;
-    }
 }

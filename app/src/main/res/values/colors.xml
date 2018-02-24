@@ -5,7 +5,7 @@
     tools:ignore="MissingTranslation"
     >
     <color name="colorPrimary">#3F51B5</color>
-    <color name="colorPrimaryDark">#303F9F</color>
+    <color name="colorPrimaryDark">#2C4257</color>
     <color name="colorAccent">#FF4081</color>
     <color name="transparent">#00ffffff</color>
     <color name="blue_light">#02A8F3</color>
@@ -129,4 +129,22 @@
     <color name="pickerview_timebtn_nor">#057dff</color>
     <color name="pickerview_timebtn_pre">#c2daf5</color>
     <color name="pickerview_topbar_title">#000000</color>
+
+
+
+
+
+
+
+    <color name="_9">#999999</color>
+
+    <color name="e">#EEEEEE</color>
+
+    <color name="c">#CCCCCC</color>
+
+
+
+
+
+
 </resources>

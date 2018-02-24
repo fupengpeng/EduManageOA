@@ -46,11 +46,11 @@ public class LoginViewPresenter implements ILoginViewPresenter {
             @Override
             public void onSuccess(LoginResponseData data) {
                 // 判断门店信息是否存在
-                if(data.getUshop()==null || data.getUshop().size()==0){
-                    // 通知界面
-                    loginView.onLoginFail(new Exception("未加入门店"));
-                    return;
-                }
+//                if(data.getUshop()==null || data.getUshop().size()==0){
+//                    // 通知界面
+//                    loginView.onLoginFail(new Exception("未加入门店"));
+//                    return;
+//                }
 
                 // 保存session
                 SPUtils.put(MyApplication.getInstance(), Consts.SESSION, data.getSessionId());
@@ -64,7 +64,6 @@ public class LoginViewPresenter implements ILoginViewPresenter {
                         shopList.add(shop);
                     }
                 }
-                MyApplication.getInstance().setShops(shopList);
                 // 通知界面
                 loginView.onLoginSuccess();
             }

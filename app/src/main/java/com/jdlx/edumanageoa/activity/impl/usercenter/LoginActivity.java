@@ -1,121 +1,153 @@
 package com.jdlx.edumanageoa.activity.impl.usercenter;
 
+import android.content.Intent;
 import android.os.Bundle;
+import android.text.Editable;
+import android.text.InputType;
 import android.text.TextUtils;
+import android.text.TextWatcher;
+import android.view.View;
+import android.widget.Button;
 import android.widget.EditText;
+import android.widget.ImageView;
+import android.widget.LinearLayout;
+import android.widget.ScrollView;
+import android.widget.TextView;
 
 import com.jdlx.edumanageoa.R;
 import com.jdlx.edumanageoa.activity.impl.BaseActivity;
 import com.jdlx.edumanageoa.activity.impl.MainActivity;
 import com.jdlx.edumanageoa.activity.view.usercenter.ILoginView;
-import com.jdlx.edumanageoa.application.MyApplication;
-import com.jdlx.edumanageoa.common.Consts;
-import com.jdlx.edumanageoa.entity.Shop;
-import com.jdlx.edumanageoa.presenter.factory.usercenter.LoginViewPresenterFactory;
-import com.jdlx.edumanageoa.presenter.interf.usercenter.ILoginViewPresenter;
-import com.jdlx.edumanageoa.util.AccountUtils;
-import com.jdlx.edumanageoa.util.InfoUtils;
-import com.jdlx.edumanageoa.util.SPUtils;
-
-import java.util.List;
 
 import butterknife.BindView;
+import butterknife.ButterKnife;
 import butterknife.OnClick;
 
 /**
  * 登录界面
  */
 public class LoginActivity extends BaseActivity implements ILoginView {
-    // 手机号
-    @BindView(R.id.et_phone_number)
-    EditText etPhoneNumber;
-    // 密码
+    @BindView(R.id.et_mobile)
+    EditText mEtMobile;
+    @BindView(R.id.iv_clean_phone)
+    ImageView mIvCleanPhone;
     @BindView(R.id.et_password)
-    EditText etPassword;
+    EditText mEtPassword;
+    @BindView(R.id.clean_password)
+    ImageView mCleanPassword;
+    @BindView(R.id.iv_show_pwd)
+    ImageView mIvShowPwd;
+    @BindView(R.id.btn_login)
+    Button mBtnLogin;
+    @BindView(R.id.toolbar_title)
+    TextView toolbarTitle;
 
-    // 主导器
-    ILoginViewPresenter presenter;
+    @BindView(R.id.email_login_form)
+    LinearLayout emailLoginForm;
+    @BindView(R.id.login_form)
+    ScrollView loginForm;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
-        super.onCreate(savedInstanceState, R.layout.activity_login);
+        super.onCreate(savedInstanceState);
+        setContentView(R.layout.activity_login);
+        ButterKnife.bind(this);
 
-        // 创建主导器
-        presenter = LoginViewPresenterFactory.newInstance(this);
+        toolbarTitle.setText("用户登录");
+
+        initEvent();
+
     }
 
+    private void initEvent() {
+        mEtMobile.addTextChangedListener(new TextWatcher() {
+            @Override
+            public void beforeTextChanged(CharSequence s, int start, int count, int after) {
 
-    /**
-     * 登录
-     */
-    @OnClick(R.id.btn_login)
-    public void login() {
-        // 获取手机号和密码
-        String phoneNumber = etPhoneNumber.getText().toString().trim();
-        String password = etPassword.getText().toString().trim();
-        // 验证手机号
-        if (!AccountUtils.checkPhoneNum(phoneNumber, this, etPhoneNumber)) {
-            return;
-        }
-        // 验证密码
-        if (!AccountUtils.checkPassword(password, this, etPassword)) {
-            return;
-        }
-        // 登录
-        // 显示等待对话框
-        showWaitDialog(Consts.WaitDialogMessage.LOGINING);
-        presenter.login(phoneNumber, password);
-    }
-
-    /**
-     * 通过验证码登录
-     */
-    @OnClick(R.id.tv_login_by_validate_code)
-    public void loginByValidateCode() {
-        //
-        InfoUtils.showInfo(this, "正在开发中");
-    }
-
-    /**
-     * 当登录成功
-     */
-    @Override
-    public void onLoginSuccess() {
-        // 关闭等待对话框
-        closeWaitDialog();
-        // 获取存储的门店ID
-        String currShopId = (String) SPUtils.get(this, Consts.CURR_SHOP, "");
-        if (TextUtils.isEmpty(currShopId)) {
-            // 去选择门店
-//            startActivity(ChangeShopActivity.class);
-            finish();
-        } else {
-            // 判断门店是否存在
-            List<Shop> shopList = MyApplication.getInstance().getShops();
-            for (Shop shop : shopList) {
-                if(currShopId.equals(shop.getId())){
-                    // 跳转到主界面
-                    startActivity(MainActivity.class);
-                    finish();
-                    return;
-                }
             }
 
-            // 去选择门店
-            SPUtils.remove(this, Consts.CURR_SHOP);
-//            startActivity(ChangeShopActivity.class);
-            finish();
+            @Override
+            public void onTextChanged(CharSequence s, int start, int before, int count) {
+
+            }
+
+            @Override
+            public void afterTextChanged(Editable s) {
+                if (!TextUtils.isEmpty(s) && mIvCleanPhone.getVisibility() == View.GONE) {
+                    mIvCleanPhone.setVisibility(View.VISIBLE);
+                } else if (TextUtils.isEmpty(s)) {
+                    mIvCleanPhone.setVisibility(View.GONE);
+                }
+            }
+        });
+        mEtPassword.addTextChangedListener(new TextWatcher() {
+            @Override
+            public void beforeTextChanged(CharSequence s, int start, int count, int after) {
+
+            }
+
+            @Override
+            public void onTextChanged(CharSequence s, int start, int before, int count) {
+
+            }
+
+            @Override
+            public void afterTextChanged(Editable s) {
+                if (!TextUtils.isEmpty(s) && mCleanPassword.getVisibility() == View.GONE) {
+                    mCleanPassword.setVisibility(View.VISIBLE);
+                } else if (TextUtils.isEmpty(s)) {
+                    mCleanPassword.setVisibility(View.GONE);
+                }
+                if (s.toString().isEmpty())
+                    return;
+                if (!s.toString().matches("[A-Za-z0-9]+")) {
+                    String temp = s.toString();
+//                    Toast.makeText(LoginActivity.this, "请输入数字或字母", Toast.LENGTH_SHORT).show();
+                    s.delete(temp.length() - 1, temp.length());
+                    mEtPassword.setSelection(s.length());
+                }
+            }
+        });
+    }
+
+
+    @OnClick({R.id.iv_clean_phone, R.id.clean_password, R.id.iv_show_pwd, R.id.btn_login})
+    public void onViewClicked(View view) {
+        switch (view.getId()) {
+            case R.id.iv_clean_phone:
+                mEtMobile.setText("");
+                break;
+            case R.id.clean_password:
+                mEtPassword.setText("");
+                break;
+            case R.id.iv_show_pwd:
+                if (mEtPassword.getInputType() != InputType.TYPE_TEXT_VARIATION_VISIBLE_PASSWORD) {
+                    mEtPassword.setInputType(InputType.TYPE_TEXT_VARIATION_VISIBLE_PASSWORD);
+                    mIvShowPwd.setImageResource(R.drawable.pass_visuable);
+                } else {
+                    mEtPassword.setInputType(InputType.TYPE_CLASS_TEXT | InputType.TYPE_TEXT_VARIATION_PASSWORD);
+                    mIvShowPwd.setImageResource(R.drawable.pass_gone);
+                }
+                String pwd = mEtPassword.getText().toString();
+                if (!TextUtils.isEmpty(pwd))
+                    mEtPassword.setSelection(pwd.length());
+                break;
+            case R.id.btn_login:
+                Intent intent = new Intent(this, MainActivity.class);
+
+                startActivity(intent);
+                break;
         }
     }
 
-    /**
-     * 当登录失败
-     */
+    @Override
+    public void onLoginSuccess() {
+
+    }
+
     @Override
     public void onLoginFail(Exception e) {
-        // 关闭等待对话框
-        closeWaitDialog();
-        // 显示失败信息
-        InfoUtils.showInfo(this, e.getMessage());
+
     }
 }

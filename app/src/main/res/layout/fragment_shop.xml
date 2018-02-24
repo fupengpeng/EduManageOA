@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical">
@@ -21,11 +22,13 @@
             android:layout_width="@dimen/x64"
             android:layout_height="@dimen/y8"
             android:paddingEnd="@dimen/x34"
-            android:paddingStart="@dimen/x10" />
+            android:paddingStart="@dimen/x10"
+            android:src="@drawable/ic_chevron_left_black_24dp"/>
 
         <!-- 门店名 -->
         <TextView
             android:id="@+id/tv_shop_name"
+            android:text="消息"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_weight="1"
@@ -39,11 +42,31 @@
             android:layout_width="@dimen/x64"
             android:layout_height="@dimen/y12"
             android:paddingEnd="@dimen/x10"
-            android:paddingStart="@dimen/x40" />
+            android:paddingStart="@dimen/x40"
+            android:src="@drawable/ic_chevron_right_black_24dp"/>
     </LinearLayout>
+    <android.support.v4.view.ViewPager
+        android:id="@+id/viewpager"
+        android:layout_weight="1"
+        android:layout_width="match_parent"
+        android:layout_height="0dp">
+    </android.support.v4.view.ViewPager>
+    <TableLayout
+        android:id="@+id/id_tablayout"
+        android:layout_width="match_parent"
+        android:layout_height="45dp"
+        app:tabGravity="fill"
+        android:background="#ffffff"
+        app:tabIndicatorColor="#FF0000"
+        app:tabMode="scrollable"
+        app:tabTextAppearance="@style/TabLayoutTextStyle"
+        app:tabSelectedTextColor="#FF0000"/>
+
+
 
     <!-- 内容 -->
     <ScrollView
+        android:visibility="gone"
         android:id="@+id/sv_shop_content"
         android:layout_width="match_parent"
         android:layout_height="match_parent"

@@ -24,20 +24,14 @@ import com.jdlx.edumanageoa.common.Consts;
 import com.jdlx.edumanageoa.common.DataEvent;
 import com.jdlx.edumanageoa.customerview.CircleImageView;
 import com.jdlx.edumanageoa.customerview.MyDrawerLayout;
-import com.jdlx.edumanageoa.entity.Shop;
-import com.jdlx.edumanageoa.entity.ShopStatisticalData;
 import com.jdlx.edumanageoa.entity.User;
-import com.jdlx.edumanageoa.entity.Worker;
-import com.jdlx.edumanageoa.fragment.factory.ShopFragmentFactory;
 import com.jdlx.edumanageoa.fragment.impl.BaseFragment;
-import com.jdlx.edumanageoa.fragment.view.shop.IShopView;
 import com.jdlx.edumanageoa.presenter.factory.MainViewPresenterFactory;
 import com.jdlx.edumanageoa.presenter.interf.IMainViewPresenter;
 import com.jdlx.edumanageoa.util.InfoUtils;
 import com.jdlx.edumanageoa.util.SPUtils;
 import com.jdlx.edumanageoa.util.ToastUtils;
 import com.nineoldandroids.view.ViewHelper;
-import com.squareup.picasso.Picasso;
 
 import org.greenrobot.eventbus.EventBus;
 import org.greenrobot.eventbus.Subscribe;
@@ -68,21 +62,9 @@ public class MainActivity extends BaseActivity implements IMainView {
     // 工作状态
     @BindView(R.id.tv_user_work_state)
     TextView tvUserWorkState;
-    // 当前门店名
-    @BindView(R.id.tv_curr_shop_name)
-    TextView tvCurrShopName;
-    // 营业额
-    @BindView(R.id.tv_curr_shop_turnover)
-    TextView tvCurrShopTurnover;
-    // 单量/客量
-    @BindView(R.id.tv_curr_shop_order_customer_number)
-    TextView tvCurrShopOrderCustomerNumber;
-    // 新增会员
-    @BindView(R.id.tv_curr_shop_new_customer_number)
-    TextView tvCurrShopNewCustomerNumber;
 
-    // 门店Fragment
-    private IShopView shopFragment;
+
+
 
     // 上一次显示的Fragment
     private BaseFragment lastFragment;
@@ -119,9 +101,7 @@ public class MainActivity extends BaseActivity implements IMainView {
         // 订阅EventBus
 //        EventBus.getDefault().register(this);
 
-        // 进入门店
-        String currShopId = (String) SPUtils.get(this, Consts.CURR_SHOP, "");
-        showShop(currShopId);
+
     /*----------------------- 极光推送开始 -------------------------*/
 
     /*----------------------- 极光推送结束 -------------------------*/
@@ -140,49 +120,15 @@ public class MainActivity extends BaseActivity implements IMainView {
             finish();
             return;
         }
-        // 工作者信息
-        Worker worker = user.getWorker();
-        if (worker == null) {
-            InfoUtils.showInfo(this, "未加入门店");
-            startActivity(LoginActivity.class);
-            finish();
-            return;
-        }
 
-        // 头像
-        if (user.getPhotoUrl() != null && !"".equals(user.getPhotoUrl())) {
-            Picasso.with(this).load(user.getPhotoUrl()).into(ivUserHead);
-        }
-        // 用户名
-        tvUserName.setText(user.getName());
-        // 职称
-        String workName = worker.getJobname() + worker.getPostname();
-        tvUserWorkName.setText(workName);
-        // 工作状态
-        tvUserWorkState.setText(worker.getWorkstatename());
+
+
 
         // 当前门店
-        Shop currShop = MyApplication.getInstance().getCurrShop();
-        tvCurrShopName.setText(currShop.getName());
+
 
         // 统计数据
-        ShopStatisticalData statisticalData = currShop.getStatisticalData();
-        if (statisticalData != null) {
-            // 营业额
-            tvCurrShopTurnover.setText(statisticalData.getIncome());
-            // 单量/客量
-            String ocn = statisticalData.getAll() + "/" + statisticalData.getMnum();
-            tvCurrShopOrderCustomerNumber.setText(ocn);
-            // 新增会员
-            tvCurrShopNewCustomerNumber.setText(statisticalData.getNmnum());
-        } else {
-            // 营业额
-            tvCurrShopTurnover.setText("0.00");
-            // 单量/客量
-            tvCurrShopOrderCustomerNumber.setText("0/0");
-            // 新增会员
-            tvCurrShopNewCustomerNumber.setText("0");
-        }
+
     }
 
     /**
@@ -213,13 +159,7 @@ public class MainActivity extends BaseActivity implements IMainView {
      * @param shopId 门店ID
      */
     private void showShop(String shopId) {
-        if (shopFragment == null) {
-            shopFragment = ShopFragmentFactory.newInstance();
-        }
-        showFragment(R.id.fl_main_content, lastFragment, (BaseFragment) shopFragment);
-        lastFragment = (BaseFragment) shopFragment;
-        // 设置门店ID
-        shopFragment.setShopId(shopId);
+
     }
 
     /**
@@ -230,29 +170,9 @@ public class MainActivity extends BaseActivity implements IMainView {
         InfoUtils.showInfo(this, "正在开发中，敬请期待！");
     }
 
-    /**
-     * 切换门店
-     */
-    @OnClick(R.id.ll_shop_info)
-    public void changeShop() {
-//        startActivityForResult(new Intent(this, ChangeShopActivity.class), CHANGE_SHOP);
-    }
 
-    /**
-     * 打开业绩分析界面
-     */
-    @OnClick(R.id.ll_performance_analysis)
-    public void showPerformanceAnalysisView() {
-        InfoUtils.showInfo(this, "正在开发中，敬请期待！");
-    }
 
-    /**
-     * 打开客单明细界面
-     */
-    @OnClick(R.id.ll_order_detail)
-    public void showOrderDetailView() {
-        InfoUtils.showInfo(this, "正在开发中，敬请期待！");
-    }
+
 
     /**
      * 打开个人设置界面
@@ -563,6 +483,10 @@ public class MainActivity extends BaseActivity implements IMainView {
         isForeground = false;
         super.onPause();
     }
+
+
+
+
 
 
 }
