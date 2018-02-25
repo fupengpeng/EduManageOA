@@ -53,6 +53,7 @@
             android:layout_width="match_parent"
             android:layout_height="45dp" >
             <LinearLayout
+                android:id="@+id/ll_atvt_main_msg"
                 android:orientation="vertical"
                 android:layout_weight="0.33"
                 android:layout_width="0dp"
@@ -70,6 +71,7 @@
                 android:layout_width="@dimen/dp_1"
                 android:layout_height="match_parent"/>
             <LinearLayout
+                android:id="@+id/ll_atvt_main_linkman"
                 android:orientation="vertical"
                 android:layout_weight="0.33"
                 android:layout_width="0dp"
@@ -85,6 +87,7 @@
                 android:layout_width="@dimen/dp_1"
                 android:layout_height="match_parent"/>
             <LinearLayout
+                android:id="@+id/ll_atvt_main_work"
                 android:orientation="vertical"
                 android:layout_weight="0.33"
                 android:layout_width="0dp"
